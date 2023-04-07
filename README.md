@@ -31,7 +31,7 @@ Open terminator, split two vertical;
 In the first terminator;
 ```
 ros2<space><tab><tab>
-### You will see action, launch, node, run
+### >You will see action, launch, node, run
 
 ros2 run demo_nodes_cpp talker      # run talker nodes
 ```
@@ -40,10 +40,11 @@ In the second terminator;
 ros2 run demo_nodes_cpp listener      # run listener nodes
 ```
 
-## Write ROS2 Program/Node
+## 2 - Write ROS2 Program/Node
 In this section, we will create ROS2 `workspace` in which ROS2 `package` would also be created. Then write the `node` inside the package, and then compile it and run it.
 To write ROS2 Program, it is needed to install ROS2 build tool (colcon) with ```sudo apt install python3-colcon-common-extensions```.
 There is one more thing needed to do with colcon; it is to source the colcon bash in bashrc.
+Open terminal;
 ```
 cd /usr/share/colcon_argcomplete/hook/
 ls
@@ -52,3 +53,33 @@ ls
 gedit ~/.bashrc     # open the bashrc to source bash file
 ```
 At the end line of bashrc, source bash by adding ```source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash```.
+
+### 2.1 Create ROS2 workspace
+To create ROS2 workspace, make directory of ROS2 worksapce under home; open terminator;
+```
+cd      # make sure home dir
+ls
+
+mkdir ros2_ws     # make ros2 workspace directory
+ls
+
+cd ros2_ws        
+ls
+mkdir src         # make src under ros2_ws
+ls
+### >src
+
+build colcon    # build the ws using colcon
+ls
+### >build  install  log  src
+
+cd install
+ls
+### >You will see some setup/bash files. It's important to care is local_setup.bash & setup.bash.
+```
+The difference between `local_setup.bash` and `setup.bash` is that sourcing local_setup `source local_setup.bash` means overlay and using whatever created under that workspace, but sourcing `setup.bash` means that using the created workspace plus underlay workspace which is global installed ROS2. So, it is highly recommended to source this `setup.bash` in bashrc. Open separate terminator;
+```
+gedit ~/.bashrc
+
+### Add this and save->> source ~/ros2_ws/install/setup.bash
+```
