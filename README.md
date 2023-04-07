@@ -40,3 +40,15 @@ In the second terminator;
 ros2 run demo_nodes_cpp listener      # run listener nodes
 ```
 
+## Write ROS2 Program/Node
+In this section, we will create ROS2 `workspace` in which ROS2 `package` would also be created. Then write the `node` inside the package, and then compile it and run it.
+To write ROS2 Program, it is needed to install ROS2 build tool (colcon) with ```sudo apt install python3-colcon-common-extensions```.
+There is one more thing needed to do with colcon; it is to source the colcon bash in bashrc.
+```
+cd /usr/share/colcon_argcomplete/hook/
+ls
+### colcon-argcomplete.bash  colcon-argcomplete.zsh
+
+gedit ~/.bashrc     # open the bashrc to source bash file
+```
+At the end line of bashrc, source bash by adding ```source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash```.
