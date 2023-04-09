@@ -83,3 +83,50 @@ gedit ~/.bashrc
 
 ### Add this and save->> source ~/ros2_ws/install/setup.bash
 ```
+
+
+### 2.2 Create a Python & C++ Package
+To create a ROS2 Node, we need a Package inside the created Workspace. Packages allow us to separate our code to reusable blocks. Packages are independent, i.e one package is for Camera, one package is for Motion Planning, and another is for Hardwar Control.
+To create a package, open terminator/terminal;
+
+**Python Package**
+```
+cd ros2_ws/src    # cd to ros2_ws/src
+
+ros2 pkg create my_py_pkg --build-type ament_python --dependencies rclpy      # Create ROS2 python package
+
+ls    # check created package
+### > my_py_pkg
+```
+
+*After created Package, then compile the created package; Open Terminal;*
+```
+cd ros2_ws/   # chage directory
+
+colcon build      # compile if there is only one or all pkg
+
+## OR ##
+
+colcon build --packages-select my_py_pkg    # compile by selecting desired package
+```
+
+**CPP Package**
+```
+cd ros2_ws/src/     # cd to src
+ls
+
+ros2 pkg create my_cpp_pkg --build-type ament_cmake --dependencies rclcpp     # Create ROS2 C++ Package
+
+ls
+### > my_cpp_pkg  my_py_pkg
+```
+*After created Package, then compile the created package; Open Terminal;*
+```
+cd ros2_ws/
+
+colcon build      # compile all packages
+
+## OR ##
+
+colcon build --packages-select my_cpp_pkg       #  compile by selecting desired package
+```
